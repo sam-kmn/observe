@@ -13,8 +13,8 @@ const useLocalStorage = (key) => {
   useEffect(() => {
     window.addEventListener('storage.' + key, () => {
       setValue(JSON.parse(localStorage.getItem(key)) || [])   
-    });
-  }, [])
+    })
+  }, [key])
 
   return [value, saveValue]
 }
