@@ -1,0 +1,29 @@
+
+
+table{ 
+  width: 100%;
+  background-color: rgb(35, 34, 36);
+}
+
+table, th, td {
+  border: 1px solid #575596;
+  padding: 0.3rem 0.2rem;
+}
+
+th{ padding: .5rem;}
+td{ text-align: center;}
+
+.active{
+  /* border-bottom: 2px solid white !important; */
+  animation: border_pulse 2s infinite;
+}
+
+input:focus{
+  outline: none !important;
+}
+
+@keyframes border_pulse {
+  0%    {border-bottom: 1px solid inherit}
+  50%   {border-bottom: 1px solid white}
+  100%  {border-bottom: 1px solid inherit}
+}
