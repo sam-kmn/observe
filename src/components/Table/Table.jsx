@@ -12,7 +12,7 @@ import './DatePicker.css'
 const Table = ({columns, rows, setRows}) => {
 
   const [date, setDate] = useState(new Date())
-  const [showEditor, setShowEditor] = useState(false)
+  const [showEditor, setShowEditor] = useState(rows.length > 0 ? false : true)
   const [editor, setEditor] = useState({})
 
 
