@@ -12,7 +12,6 @@ import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useTimeline } from '../contexts/Timeline';
-// import useLocalStorage from '../hooks/useLocalStorage';
 
 ChartJS.register(
   CategoryScale,
@@ -30,7 +29,6 @@ export default function LineChart({className, data }) {
   const [timeline] = useTimeline()
   const [chartData, setChartData] = useState({})
 
-
   const options = {
     maintainAspectRatio: false,
     responsive: true,
@@ -42,7 +40,7 @@ export default function LineChart({className, data }) {
   };
   
   useEffect(() => {
-    if (!rows.length) return 
+    if (!rows.length || !Object.keys(columns).length) return 
     setChartData({
       labels: (timeline === 'all' ? 
         rows.map( day => dayjs(day.date).format('DD-MM')) :

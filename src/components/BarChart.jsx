@@ -12,8 +12,6 @@ import {
 import { Bar } from 'react-chartjs-2';
 import dayjs from 'dayjs';
 import { useTimeline } from '../contexts/Timeline';
-// import useLocalStorage from '../hooks/useLocalStorage';
-// import { useData } from '../contexts/Data';
 
 ChartJS.register(
   CategoryScale,
@@ -42,7 +40,7 @@ export default function BarChart({className, data}) {
   };
   
   useEffect(() => {
-    if (!rows.length) return 
+    if (!rows.length || !Object.keys(columns).length) return 
     setChartData({
       labels: (timeline === 'all' ? 
         rows.map( day => dayjs(day.date).format('DD-MM')) :

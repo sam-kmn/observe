@@ -2,7 +2,7 @@ import { useTimeline } from "../contexts/Timeline"
 import useLocalStorage from "../hooks/useLocalStorage"
 
 const Pagination = () => {
-  const [rows] = useLocalStorage('rows')
+  const [rows] = useLocalStorage('rows', [])
   const [timeline, setTimeline] = useTimeline()
   const classes = 'h-full flex items-center justify-center flex-1 text-gray-400 hover:text-gray-100 hover:bg-indigo-700 transition ease-in-out duration-300'
   const activeClasses = (i) => timeline === i ? 'text-gray-50 bg-indigo-700' : ''

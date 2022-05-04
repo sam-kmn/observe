@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 
 
-const useLocalStorage = (key) => {
+const useLocalStorage = (key, defaultValue) => {
 
-  const [value, setValue] = useState(JSON.parse(localStorage.getItem(key)) || [])
+  const [value, setValue] = useState(JSON.parse(localStorage.getItem(key)) || defaultValue)
 
   const saveValue = (newData) => {
     localStorage.setItem(key, JSON.stringify(newData))
@@ -12,9 +12,9 @@ const useLocalStorage = (key) => {
 
   useEffect(() => {
     window.addEventListener('storage.' + key, () => {
-      setValue(JSON.parse(localStorage.getItem(key)) || [])   
+      setValue(JSON.parse(localStorage.getItem(key)) || defaultValue)   
     })
-  }, [key])
+  }, [key, defaultValue])
 
   return [value, saveValue]
 }
