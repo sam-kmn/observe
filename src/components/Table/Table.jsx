@@ -9,8 +9,9 @@ import styles from './Table.module.css'
 import './DatePicker.css'
 
 
-const Table = ({columns, rows, setRows}) => {
+const Table = ({className, columns, useRows}) => {
 
+  const [rows, setRows] = useRows
   const [date, setDate] = useState(new Date())
   const [showEditor, setShowEditor] = useState(rows.length > 0 ? false : true)
   const [editor, setEditor] = useState({})
@@ -58,24 +59,19 @@ const Table = ({columns, rows, setRows}) => {
   }
 
   return Object.keys(columns).length > 0 && (
-  <div className="flex flex-col w-full ">
+  <div className={`${className} flex flex-col`}>
     
-    <div className="w-full px-4 py-1 bg-indigo-700 rounded-t-lg">
-      <header className="flex flex-row items-center justify-between text-xl">
-        
-        <p>Data Editor</p>
-
-        <nav className="flex flex-row gap-4">
-          <button onClick={submitEditor}>
-            <AddIcon />
-          </button>
-          {showEditor && (
-            <button onClick={clearEditor}><CloseIcon /></button>
-          )}
-        </nav>
-
-      </header>
-    </div>
+    <header className="flex flex-row items-center justify-between text-xl w-full px-4 py-1 bg-indigo-700 rounded-t-lg">
+      <div>Data Editor</div>
+      <nav className="flex flex-row gap-4">
+        <button onClick={submitEditor}>
+          <AddIcon />
+        </button>
+        {showEditor && (
+          <button onClick={clearEditor}><CloseIcon /></button>
+        )}
+      </nav>
+    </header>
 
     <table className={styles}>
       <thead>
