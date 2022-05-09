@@ -10,9 +10,10 @@ const Wrapper = () => {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <main className="py-4 px-2 sm:px-8 h-full">
-        {Object.keys(columns).length ? <Outlet /> : <Setup />}
-      </main>
+      {Object.keys(columns).length ?
+        <main className="h-full py-4 px-2 sm:px-8"><Outlet /></main> : 
+        <main className="h-full"><Setup /></main>}
+
     </div>
   )
 }

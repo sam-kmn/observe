@@ -64,15 +64,17 @@ const Columns = ({columns, setColumns}) => {
         {inputColumns && inputColumns.map( col => (
           
           <div key={col.id} className='flex flex-row items-end '>
+
+            <button onClick={() => toggleColorPicker(col.id)} className='w-7 h-7 rounded-full rounded-br-none relative' style={{'backgroundColor': col.color}}>
+              {col.colorPicker ? <TwitterPicker color={col.color} onChangeComplete={(color) => changeColor(col.id, color)} className='absolute -bottom-10 left-0 z-10' /> : ''}
+            </button>
+
             <input type="text" name='name'
               onChange={changeName(col.id)}
-              className='bg-inherit border-b-2 text-white p-1 md:text-lg' 
+              className='bg-inherit border-b-2 text-white pl-2 md:text-lg' 
               placeholder='Column name' style={{'borderColor': col.color}}
             />
             
-            <button onClick={() => toggleColorPicker(col.id)} className='w-7 h-7 rounded-full rounded-bl-none relative' style={{'backgroundColor': col.color}}>
-              {col.colorPicker ? <TwitterPicker color={col.color} onChangeComplete={(color) => changeColor(col.id, color)} className='absolute -bottom-10 left-0 z-10' /> : ''}
-            </button>
           </div>
 
         ))}
