@@ -18,3 +18,10 @@ input:-webkit-autofill:focus {
 input[data-autocompleted] {
     background-color: transparent !important;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: white;
+  background-color: white;
+  border-radius: 50%;
+  /* font-size: 2rem; */
+}
